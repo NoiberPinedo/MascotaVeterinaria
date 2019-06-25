@@ -11,9 +11,9 @@ import java.util.List;
 
 /**
  *
- * @author Computer
+ * @author USUARIO
  */
-public class ejemplo5 {
+public class Ejemplo04 {
 
     /**
      * @param args the command line arguments
@@ -21,10 +21,9 @@ public class ejemplo5 {
     public static void main(String[] args) {
         // TODO code application logic here
         MascotaDao mascotadao = new MascotaDao();
-        List<Mascota> lista = mascotadao.listarNombreMascota("firulais");
+        List<Mascota> lista = mascotadao.listarMascotaRaza("pitbull");
         for (Mascota mascota : lista) {
-            System.out.println(mascota.getRaza() + "+++"
-                    + mascota.getNombreCliente());
+            System.out.println(mascota.getNombreCliente());
         }
     }
     

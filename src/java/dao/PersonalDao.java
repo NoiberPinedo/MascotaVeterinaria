@@ -5,10 +5,9 @@
  */
 package dao;
 
-import entidades.Mascota;
-import interfaces.IMascota;
+import entidades.Personal;
+import interfaces.IPersonal;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,19 +17,15 @@ import utilitarios.HibernateUtil;
  *
  * @author USUARIO
  */
-public class MascotaDao implements IMascota {
-
-    //funcion para guardar
-    @Override
-    public boolean guardarMascota(Mascota mascota) {
+public class PersonalDao implements IPersonal{
+     @Override
+    public boolean guardarPersonal(Personal personal) {
         Session session = null;
         boolean respuesta = true;
         try {
-            //construir una nueva session y transaccion
             session = HibernateUtil.getSessionFactory().openSession();
             Transaction transaccion = session.beginTransaction(); //inicia
-            //registra en la base de datos
-            session.save(mascota);
+            session.save(personal);
             transaccion.commit();
         } catch (Exception e) {
             System.out.println("Error al guardar. " + e);
@@ -43,18 +38,15 @@ public class MascotaDao implements IMascota {
         return respuesta;
     }
 
-    //funcion para listar
     @Override
-    public ArrayList<Mascota> listarMascotas() {
+    public ArrayList<Personal> listarPersonal() {
         Session session = null;
-        ArrayList<Mascota> lista = new ArrayList<>();
+        ArrayList<Personal> lista = new ArrayList<>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            //consulta hacia la base de datos
-            String hql = "FROM Mascota";
+            String hql = "FROM Personal";
             Query query = session.createQuery(hql);
-            //ejecuta la consulta y obtener la lista. array: castea
-            lista = (ArrayList<Mascota>) query.list();
+            lista = (ArrayList<Personal>) query.list();
         } catch (Exception e) {
             System.out.println("ERROR EN LISTAR::" + e);
         } finally {
@@ -67,14 +59,14 @@ public class MascotaDao implements IMascota {
     }
 
     @Override
-    public boolean actualizarMascota(Mascota mascota) {
-        System.out.println("erer" + mascota.getNombreCliente());
+    public boolean actualizarPersonal(Personal personal) {
+
         boolean resp = true;
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Transaction transaccion = session.beginTransaction();
-            session.update(mascota);
+            session.update(personal);
             transaccion.commit();
         } catch (Exception e) {
             resp = false;
@@ -88,41 +80,13 @@ public class MascotaDao implements IMascota {
     }
 
     @Override
-    public List<Mascota> listarMascotaRaza(String raza) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        String hql = " from Mascota where raza='" + raza + "'";
-        Query query = session.createQuery(hql);
-        List< Mascota> lista = (List< Mascota>) query.list();
-        return lista;
-    }
-
-    @Override
-    public List<Mascota> listarNombreMascota(String nombreMascota) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        String hql = " from Mascota where nombreMascota='" + nombreMascota + "'";
-        Query query = session.createQuery(hql);
-        List< Mascota> lista = (List< Mascota>) query.list();
-        return lista;
-    }
-
-    @Override
-    public Integer ContadorMascota() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        String hql = "select count(*) from Mascota";
-        Query query = session.createQuery(hql);
-        Long FilasTab = (Long) query.uniqueResult();
-        Integer cont = FilasTab.intValue();
-        return cont;
-    }
-
-    @Override
-    public boolean eliminarMascota(Mascota mascota) {
+    public boolean eliminarPersonal(Personal personal) {
         Session sesion = null;
         boolean resp = true;
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
             sesion.beginTransaction();
-            sesion.delete(mascota);
+            sesion.delete(personal);
             sesion.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("ERROR DAO::" + e);

@@ -14,9 +14,9 @@ import utilitarios.HibernateUtil;
 
 /**
  *
- * @author Computer
+ * @author USUARIO
  */
-public class ejemplo2 {
+public class Ejemplo02 {
 
     /**
      * @param args the command line arguments

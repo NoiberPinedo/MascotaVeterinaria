@@ -23,7 +23,7 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>blitzer</param-value>
-    </context-param>
+	<param-name>primefaces.THEME</param-name>
+	<param-value>delta</param-value>
+</context-param>
 </web-app>

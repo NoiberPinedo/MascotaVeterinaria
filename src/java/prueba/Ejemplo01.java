@@ -6,16 +6,16 @@ import entidades.Mascota;
 
 /**
  *
- * @author Computer
+ * @author USUARIO
  */
-public class ejemplo1 {
+public class Ejemplo01 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         MascotaDao mascotadao= new MascotaDao();
-        Mascota mascota = new Mascota(11,"firulais", "jose", "pitbull");
+        Mascota mascota = new Mascota(1,"gtrhr", "fdfhf", "fdhhfh");
         mascotadao.guardarMascota(mascota);
     }
     

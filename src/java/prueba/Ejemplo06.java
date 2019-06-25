@@ -6,14 +6,12 @@
 package prueba;
 
 import dao.MascotaDao;
-import entidades.Mascota;
-import java.util.List;
 
 /**
  *
- * @author Computer
+ * @author USUARIO
  */
-public class ejemplo4 {
+public class Ejemplo06 {
 
     /**
      * @param args the command line arguments
@@ -21,10 +19,9 @@ public class ejemplo4 {
     public static void main(String[] args) {
         // TODO code application logic here
         MascotaDao mascotadao = new MascotaDao();
-        List<Mascota> lista = mascotadao.listarMascotaRaza("pitbull");
-        for (Mascota mascota : lista) {
-            System.out.println(mascota.getNombreCliente());
-        }
+        int cantidad = mascotadao.ContadorMascota();
+        System.out.println("Cantidad de mascotas:: "+cantidad);
+        
     }
     
 }

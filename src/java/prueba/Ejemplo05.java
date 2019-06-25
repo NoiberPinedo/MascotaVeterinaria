@@ -7,29 +7,25 @@ package prueba;
 
 import dao.MascotaDao;
 import entidades.Mascota;
-import org.hibernate.Session;
-import utilitarios.HibernateUtil;
+import java.util.List;
 
 /**
  *
- * @author Computer
+ * @author USUARIO
  */
-public class ejemplo3 {
+public class Ejemplo05 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Session session = HibernateUtil.getSessionFactory().openSession();
         MascotaDao mascotadao = new MascotaDao();
-        Mascota mimascota = new Mascota(1, "Juancito", "Fidel cartolin", "chiguagua");
-        mascotadao.actualizarMascota(mimascota);
-
-        session.beginTransaction();
-        session.saveOrUpdate(mimascota);
-        session.getTransaction().commit();
-        session.close();
+        List<Mascota> lista = mascotadao.listarNombreMascota("firulais");
+        for (Mascota mascota : lista) {
+            System.out.println(mascota.getRaza() + "+++"
+                    + mascota.getNombreCliente());
+        }
     }
     
 }
